@@ -1,0 +1,70 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Tests",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}/tests",
+      "program": "${workspaceRoot}/node_modules/.bin/_mocha",
+      "stopOnEntry": false,
+      "args": [
+        "-u", "tdd",
+        "--timeout", "999999",
+        "--colors",
+        "compiled/**/readModel.spec.js"
+      ],
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceRoot}/tests/compiled"]
+    },
+    {
+      "name": "Launch",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/src/server.ts",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": null,
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "internalConsole",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceRoot}/lib/**/*.js"]
+    },
+    {
+      "name": "Attach",
+      "type": "node",
+      "request": "attach",
+      "port": 5858,
+      "address": "localhost",
+      "restart": false,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceRoot}/lib/**/*.js"],
+      "localRoot": "${workspaceRoot}",
+      "remoteRoot": null
+    },
+    {
+      "name": "Attach to Process",
+      "type": "node",
+      "request": "attach",
+      "processId": "${command.PickProcess}",
+      "port": 5858,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceRoot}/lib/**/*.js"]
+    }
+  ]
+}

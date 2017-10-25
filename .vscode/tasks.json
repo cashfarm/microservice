@@ -1,0 +1,42 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build",
+      "problemMatcher": [
+        "$tslint5",
+        "$tsc"
+      ]
+    },
+    {
+      "type": "npm",
+      "script": "clean"
+    },
+    {
+      "type": "npm",
+      "script": "coverage"
+    },
+    {
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": [
+        "$tslint5"
+      ]
+    },
+    {
+      "type": "npm",
+      "script": "lint-pkg",
+      "problemMatcher": [
+        "$tslint5"
+      ]
+    },
+    {
+      "type": "npm",
+      "script": "compile",
+      "problemMatcher": []
+    }
+  ]
+}

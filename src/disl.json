@@ -1,0 +1,13 @@
+{
+  "domainDefinition": "sample.disl",
+  "#templates": "../config/disl-templates",
+  "outDir": "domain/autogen",
+  "saveJsonDefTo": "domain/autogen/orgs.json",
+  "generationStrategy": "inheritance",
+  "generateIndexes": true,
+  "modelsPath": "domains/entities",
+  "commandsDir": "commands",
+  "eventsDir": "events",
+  "exceptionsDir": "exceptions",
+  "identitiesDir": "identities"
+}
