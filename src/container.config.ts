@@ -2,18 +2,21 @@
 import 'reflect-metan////////data';
 
 import { Server } from 'hapi';
-import { Container, decorate, injectable, unmanaged } from '@cashfarm/plow';
 
-import { EventSourcedRepositoryOf, GesEventStore } from '@cashfarm/plow';
+import {
+  Container, decorate, injectable, unmanaged,
+      EventBus, IEventBus, RabbitMQTransport,
+    EventSourcedRepositoryOf, GesEventStore } from '@cashfarm/plow';
 import { MysqlStore, Store } from '@cashfarm/store';
-
-import { EventBus, IEventBus } from '@cashfarm/plow';
 import { Router } from '@cashfarm/api-util';
+
 import { IMicroserviceOptions } from './iMicroserviceOptions';
 
-export function setupContainer(container: Container, serviceName: string, server: Server, options: IMicroserviceOptions) {
+export function setupContainer(container: Container, serviceName: string,
+                               server: Server, options: IMicroserviceOptions) {
   require('./controllers');
 
+  const transport = new RabbitMQTransport();
   const router = new Router(server, []);
   server.decorate('server', 'getRouter', () => router);
   container.bind<Router>('IRouter').toConstantValue(router);
@@ -21,7 +24,7 @@ export function setupContainer(container: Container, serviceName: string, server
   container.bind<Server>('Server').toConstantValue(server);
   container.bind('ApiPrefix').toConstantValue(options.apiPrefix);
 
-  const evtBus = new EventBus(serviceName);
+  const evtBus = new EventBus(serviceName, transport);
   container.bind<IEventBus>('IEventBus').toConstantValue(evtBus);
 
   if (options.decoratePlowModules) {

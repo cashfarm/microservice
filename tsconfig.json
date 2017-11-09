@@ -29,6 +29,7 @@
     "lib",
     "tasks",
     "tests",
-    "gulpfile.ts"
+    "gulpfile.ts",
+    "package"
   ]
 }
