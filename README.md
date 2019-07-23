@@ -1,17 +1,8 @@
 Microservice Base
 ========
 
-## How to use
+## Deprecated
 
-```
-import { createServer } from '@cashfarm/microservice';
+Use https://github.com/tokilabs/tractor
 
-const server = createServer({
-  // all attributes are optional
-  // the values here are the default values
-  enableCors: true,
-  debug: true,
-  port: 3000
-});
-Server.start();
-```
+Check it on NPM https://www.npmjs.com/package/@cashfarm/tractor
